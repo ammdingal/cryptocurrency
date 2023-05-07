@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>Exchanges</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let start = 0;
+            let end = 10;
+        
+            function getCoins() {
+                $.get("https://api.coingecko.com/api/v3/exchanges", function(res) {
+                let coins = "";
+                for (let i = start; i < end; i++) {
+                    coins += "<h2>" + res[i].name + "</h2>";
+                }
+                $("#box").html(coins);
+                }, "json");
+            }
+        
+            getCoins();
+        
+            $("#topBtn").click(function() {
+                start = 0;
+                end = 100;
+                getCoins();
+            });
+        
+            $("#nextBtn").click(function() {
+                start += 10;
+                end += 10;
+                getCoins();
+            });
+        
+            $("#prevBtn").click(function() {
+                if (start >= 10 && end >= 20) {
+                start -= 10;
+                end -= 10;
+                getCoins();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Exchanges</h1>
+    <a href="/">CryptoCurrency</a>
+    <a href="/finance_platforms">Finance Platforms</a>
+    <div id="box"></div>
+    <div class="btn">
+        <button type="button" id="prevBtn">Previous 10</button>
+        <button type="button" id="topBtn">List Top 100</button>
+        <button type="button" id="nextBtn">Next 10</button>
+    </div>
+</body>
+</html>

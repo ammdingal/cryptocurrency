@@ -1,0 +1,38 @@
+
+h1{
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 800px;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding-left: 50px;
+}
+
+#box{
+    margin: 20px;
+    margin-left: 550px;
+    text-align: center;
+    width: 400px;
+    height: 500px;
+    border: 5px solid black;
+    overflow-y: scroll;
+}
+
+form{
+    display: inline-block;
+}
+
+.btn{
+    margin-left: 630px;
+}
+
+input, button{
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+    color: black;
+}
